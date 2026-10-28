@@ -1,0 +1,16 @@
+# Maven build output
+target/
+
+# Logs
+*.log
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+.claude/
+CLAUDE.md
+
+# Secrets (e.g. env file for Docker Compose)
+.env
