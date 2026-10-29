@@ -1,3 +1,6 @@
+# Fixed project name, so Jenkins and manual runs manage the same containers
+name: calculator-devops
+
 services:
 
   # Our Spring Boot calculator app
