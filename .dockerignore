@@ -1,0 +1,23 @@
+# Build output (the image builds its own JAR)
+target/
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+.claude/
+CLAUDE.md
+
+# Files not needed inside the image
+Dockerfile
+.dockerignore
+docker-compose.yml
+Jenkinsfile
+README.md
+*.log
+.env
