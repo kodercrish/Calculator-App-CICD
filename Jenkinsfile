@@ -4,6 +4,7 @@ pipeline {
     environment {
         IMAGE_NAME = 'kodercrish/calculator'
         IMAGE_TAG  = "${BUILD_NUMBER}"
+        NOTIFY_EMAIL = 'krishbipinpatel@gmail.com'
     }
 
     triggers {
@@ -82,6 +83,26 @@ pipeline {
     post {
         always {
             sh 'docker logout || true'
+        }
+        success {
+            emailext(
+                to: "${NOTIFY_EMAIL}",
+                subject: "SUCCESS: ${JOB_NAME} #${BUILD_NUMBER}",
+                body: """Build #${BUILD_NUMBER} of ${JOB_NAME} succeeded.
+
+Deployed image: ${IMAGE_NAME}:${IMAGE_TAG}
+Build details: ${BUILD_URL}"""
+            )
+        }
+        failure {
+            emailext(
+                to: "${NOTIFY_EMAIL}",
+                subject: "FAILURE: ${JOB_NAME} #${BUILD_NUMBER}",
+                body: """Build #${BUILD_NUMBER} of ${JOB_NAME} failed.
+
+Check the console output: ${BUILD_URL}console""",
+                attachLog: true
+            )
         }
     }
 }
