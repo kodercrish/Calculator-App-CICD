@@ -7,8 +7,8 @@ pipeline {
     }
 
     triggers {
-        // Start the pipeline when GitHub sends a push webhook
-        githubPush()
+        // Check GitHub every minute and build only if there are new commits
+        pollSCM('* * * * *')
     }
 
     stages {
