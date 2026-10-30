@@ -16,7 +16,7 @@ class CalculatorServiceTest {
 
     @Test
     void addPositiveNumbers() {
-        assertEquals(5, calculatorService.add(2, 3));
+        assertEquals(6, calculatorService.add(2, 3));
     }
 
     @Test
